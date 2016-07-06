@@ -1,27 +1,39 @@
-Java applet --
+Java applet
+-----------
     - special kind of Java program designed to be transmitted over the internet and automatically executed by a Java-compatible web browser
     - downloaded on demand
     - execute locally, rather than on server
     - (security) confined to Java execution environment, not allowed access to other parts of computer
+
 Java Bytecode
+-------------
     - highly optimized set of instructions designed to be executed by the Java run-time system (JVM)
     - only JVM is needed to be implemented for each platform; any Java program can run on it
     - HotSpot technology provides just-in-time (JIT) compiler (part of the JVM) for bytecode
         - selected portions of bytecode are compiled into executable code in real time; remaining code is interpreted
+
 JVM -- Java Virtual Machine
+---------------------------
     - interpreter for bytecode
+
 Java Servlet
+------------
     - small program that executes on a server
 
+
 Object-Oriented Programming
+---------------------------
     - "data controlling access to code" -- define data & routines that are permitted to act on that data
     - 3 traits
         - Encapsulation
+          -------------
             - Java unit of encapsulation = class; code/data of class = members of the class; method = function in C/C++
             - binds together code & the data it manipulates => object(instance of class); keeps it safe from outside interference & misuse
             - within object, code/data can be public or private
         - Polymorphism
+          ------------
             - allows one interface to access a general class of actions
             - ie. using the same routine for different data types (int, float, string)
         - Inheritance
+          -----------
             - one object can acquire the properties of another object
