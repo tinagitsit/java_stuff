@@ -33,7 +33,7 @@ Object-Oriented Programming
         - Polymorphism
           ------------
             - allows one interface to access a general class of actions
-            - ie. using the same routine for different data types (int, float, string)
+            - ie. using the same routine for different data types (int, float)
         - Inheritance
           -----------
             - one object can acquire the properties of another object
