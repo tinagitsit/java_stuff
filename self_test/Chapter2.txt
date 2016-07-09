@@ -1,0 +1,70 @@
+1. Why does Java strictly specify the range and behavior of its primitive types?
+    Java needs to be portable so everything has to run in the same way in different environments.
+
+2. What is Java's character type, and how does it differ from the character type used by some other programming languages?
+    Java's character type is char (unsigned, 16-bit type).
+    It uses Unicode so that it can represent all the characters present in all languages, making it fully portable.
+    Other programming languages use 8-bit quantities that only specify ASCII characters, which is a subset of Unicode.
+
+3. A boolean value can have any value you like because any non-zero value is true. True or False?
+    False; a boolean value is either true or false.
+
+4. Given this output,
+    One
+    Two
+    Three
+   using a single string, show the println() statement that produced it.
+
+    System.out.println("One\nTwo\nThree");
+
+5. What is wrong with this fragment?
+    for(i = 0; i < 10; i++) {
+      int sum;
+
+      sum = sum + i;
+    }
+    System.out.println("Sum is: " + sum);
+
+    sum is not initialized, so it won't compile.
+    Also, sum cannot be printed because it is out of scope. It is initialized in the for loop, so it can't be accessed outside of it.
+
+6. Explain the difference between the prefix and postfix forms of the increment operator.
+    The prefix form of the increment operator increments the value of the variable and then gives you that new value.
+    The postfix form gives you the current value of the variable and then increments the variable.
+
+7. Show how a short-circuit AND can be used to prevent a divide-by-zero error.
+    int i = 0;
+    if(i != 0 && (2 % i) == 0){
+      //do something
+    }
+
+8. In an expression, what type are byte and short promoted to?
+    int
+
+9. In general, when is a cast needed?
+    A cast is needed when a certain data type is expected.
+
+10. Write a program that finds all of the prime numbers between 2 and 100.
+      class FindPrimes{
+        public static void main(String args[]){
+          boolean isPrime;
+          for(int i = 2; i < 100; i++){
+            isPrime = true;
+            for(int j = 2; j < i; j++){
+              if(i % j == 0){
+                isPrime = false;
+                break;
+              }
+            }
+            if(isPrime){
+              System.out.print(i + " ");
+            }
+          }
+        }
+      }
+
+11. Does the use of redundant parentheses affect program performance?
+    no
+
+12. Does a block define a scope?
+    yes
