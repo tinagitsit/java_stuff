@@ -1,0 +1,140 @@
+Data Types and Operators
+------------------------
+Java is strongly typed -- all operations type-checked by compiler for compatibility.
+
+2 categories of built-in data types:
+    - object-oriented -- classes
+    - non-object-oriented -- primitive data types = normal binary values
+        - range and behavior of primitive data types the same in all execution environments => portability
+        -- Integers (all signed values, no unsigned values)
+            1. byte   (8 bits)
+            2. short  (16 bits)
+            3. int    (32 bits)
+            4. long   (64 bits)
+        -- Floating-Point
+            5. float  (32 bits)
+            6. double (64 bits) -- most commonly used; Math functions use double
+        -- Characters (uses Unicode)
+            7. char   (unsigned 16-bit type) -- uses single quotes (ie. 'X')
+        -- Boolean
+            8. boolean (true/false)
+
+Literals (constants)
+--------
+  - Integer literals = int (ie. 12); can be assigned to char, byte, short, or long as well
+      - long literals => append l or L (ie. 12L)
+  - Floating-point literals = double
+      - float literal => append f or F (ie. 10.19F)
+  - (JDK 7+) can put underscores in integer or floating-point literals (ie. 123_456_789 is the same as 123456789);
+    underscores discarded when compiled
+  - Hexadecimal (base 16)
+      - begins with 0x or 0X (ie. 0xFF = 255)
+  - Octal (base 8)
+      - begins with 0 (ie. 011 = 9)
+  - Binary
+      - begins with 0b or 0B (ie. 0b1100 = 12)
+  - String literal -- double quotes
+
+Character Escape Sequences
+--------------------------
+  \'      single quote
+  \"      double quote
+  \\      backslash
+  \r      carriage return
+  \n      new line
+  \f      form feed
+  \t      horizontal tab
+  \b      backspace
+  \dddd   octal constant (ddd is an octal constant)
+  \uxxxx  hexadecimal constant (xxxx is a hexadecimal constant)
+
+Variables
+---------
+  - declaration & initialization
+  - dynamic initialization -- initialization expression can use any element valid at time of initialization
+      - can dynamically initialize variable at runtime
+
+  - Scope & Lifetime of Variables
+      - block (defined by curly braces {}) defines a scope
+      - scope determines what objects are visible to other parts of the program & lifetime of the objects
+      - 2 categories of scope:
+          - class
+          - method
+              - scope begins with opening curly brace
+              - parameters also included in scope
+              - variables declared inside method not visible to code defined outside of scope
+      - scopes can be nested
+          - objects declared in outer scope are visible to objects in inner scope
+          - variable declared in inner scope cannot have same name as variable in outer (enclosing) scope
+
+Operators
+---------
+  - symbol that tells compiler to do mathematical or logical operation
+  - 4 classes of operators:
+      - Arithmetic
+          -> +, -, *, / (can be applied to any built-in numeric data type & char)
+          -> % (can be applied to both integer & floating-point types)
+          -> ++, -- (increment & decrement, prefix & postfix)
+      - Bitwise
+      - Relational
+          - relationships values can have with one another
+          -> ==, !=, >, <, >=, <=
+          - can be applied to all numeric types & char
+          - boolean values compared only for equality (==, !=)
+      - Logical
+          - ways in which true & false values can be connected together
+          -> & (AND), | (OR), ^ (XOR), || (short-circuit OR / conditional-or), && (short-circuit AND / conditional-and), ! (NOT)
+          - operands must be boolean
+  - Additional operators:
+      - Assignment operator ( = )
+          - chain of assignments (ie. x = y = z = 100 sets all to 100)
+          - shorthand assignments / compound assignment operators
+              - more compact, more efficient in some cases
+              -> +=, -=, *=, /= (arithmetic)
+              -> %=, &=, |=, ^= (logical)
+
+Type conversion in assignments
+------------------------------
+  - automatic type conversion (widening conversion) if:
+      - the two types are compatible
+      - the destination is larger than the source type
+  - no automatic type conversions to char or boolean, but integer literal can be assigned to char
+
+Casting Incompatible Types
+--------------------------
+  - (target-type) expression
+  - if narrowing conversion, info might be lost
+      - long to short => higher-order bits removed
+      - floating-point to integer => fraction truncated
+
+Operator Precedence
+-------------------
+  Highest
+    ++   --  (postfix)
+    ++   --  (prefix)   ~   !   +(unary)  -(unary)  (type-cast)
+    *    /    %
+    +    -
+    >>   >>>  <<
+    >    >=   <   <=    instanceof
+    ==   !=
+    &
+    ^
+    |
+    &&
+    ||
+    ?:
+    ->
+    =   op=
+  Lowest
+
+Expressions
+-----------
+  - can mix data types as long as they are compatible with each other
+  - Type conversion in expressions
+      - type promotion
+          - all char, byte, short values promoted to int
+          - whole expression promoted to long if one operand is a long
+          - whole expression promoted to float if one operand is a float
+          - whole expression promoted to double if one operand is a double
+          - only affects evaluation of expression, doesn't change the type of the variable outside of the expression
+          - ie. outcome of operation involving two byte values is an int (because both are promoted to int), can cast to byte if needed
