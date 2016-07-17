@@ -1,0 +1,78 @@
+Input characters from keyboard
+------------------------------
+  - System.in = input; .read() returns integer
+  - console input is line buffered -- small portion of memory is used to hold characters before they are read by your program
+  - public static void main(String args[])
+      throws java.io.IOException { }          // needed to handle input errors
+
+The IF Statement
+----------------
+  if(condition)
+    statement;
+  else if(condition)
+    statement;
+    .
+    .
+  else
+    statement;
+
+The SWITCH Statement
+--------------------
+  switch(expression) {
+    case constant1:
+      statement sequence
+      break;
+    .
+    .
+    default:
+      statement sequence
+  }
+
+  - expression is of type byte, short, int, char, enumeration (< JDK 7), or String (JDK 7+)
+  - value specified in each case is a unique constant expression (ie. a literal)
+
+The FOR Loop
+------------
+  for(initialization; condition; iteration) statement;
+
+  - Infinite loop
+      for(;;)
+      {
+        // ..
+      }
+
+  - for loops with no body
+      - ie. summing numbers from 1 to 5
+          int sum = 0;
+          for(int i = 1; i <=5; sum += i++) ;
+
+  - used for known number of iterations
+
+The WHILE Loop
+--------------
+  while(condition) statement;
+
+  - used for repeating unknown number of times
+
+The DO-WHILE Loop
+-----------------
+  do {
+    statements;
+  } while(condition);
+
+  - used for at least one iteration
+
+Use BREAK to exit a loop
+------------------------
+  - resumes at next statement following the loop
+  - will only break out of innermost loop for nested loops
+  - labeled break can break to the end of the label's block; label must enclose the labeled break statement
+      - break <label>;
+      - a form of goto with some structure
+
+Use CONTINUE
+------------
+  - forces next iteration of loop to take place
+  - skips any code between continue statement and the conditional expression that controls the loop
+  - also can use continue with a label
+      - continue <label>;

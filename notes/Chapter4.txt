@@ -1,0 +1,125 @@
+Classes, Objects, and Methods (and Garbage Collection)
+------------------------------------------------------
+  - class -- template that defines the form of an object
+      - specifies data & code that will operate on the data
+      - logical abstraction: physical representation of the class exists in memory only when object of the class is created
+      - members of class = methods & variables that constitute a class
+      - instance variables = data members of class
+          - use dot operator to access instance variables of the class
+      - class definition creates a new data type
+  - object -- instance of a class
+      - use "new" to create an object of the class
+
+General form of a class
+-----------------------------------
+  class <classname> {
+    // declare instance variables
+    type var1;
+    type var2;
+
+    // declare methods
+    type method1(parameters) {
+      // body of method
+    }
+    type method2(parameters) {
+      // body of method
+    }
+  }
+-----------------------------------
+
+How Objects Are Created
+-----------------------
+  Example:
+    class Vehicle {
+      int passengers;
+      int mpg;
+    }
+
+    - To create Vehicle object:
+        Vehicle minivan;            // declare reference to object
+        minivan = new Vehicle();    // allocate a Vehicle object
+
+        - minivan is a variable that can refer to an object
+        - declaration creates physical copy of the object and assigns to minivan a reference to the object
+
+  - the "new" operator dynamically allocates (allocates at run time) memory for an object and returns a reference (address in memory) to it
+  - all class objects in Java are dynamically allocated
+
+Reference Variables and Assignment
+----------------------------------
+  - when you assign an object reference variable to another, both variables refer to the same object
+      - different from primitive types which create a copy of the value of the variable
+
+Methods
+-------
+---------------------------------
+  ret-type name(paramter-list) {
+    // body of method
+  }
+---------------------------------
+
+  - argument = value passed to method
+  - parameter = variable that receives the argument inside the method
+
+  - Returning from a method
+      - in void method, return happens when
+          - closing curly brace is reached
+          - "return ;" statement is executed
+      - "return value;"
+
+Constructors
+------------
+  Example:
+    class MyClass {
+      int x;
+
+      MyClass(int i) {
+        x = i;
+      }
+    }
+
+  - initializes object when it is created
+  - has same name as its class
+  - no explicit return type
+  - is called by "new" when object is created
+  - default constructor is called if no constructor is defined
+      - initializes all member variables to default values:
+          - zero for numeric types
+          - null for reference types
+          - false for boolean types
+
+The "new" Operator
+------------------
+  - in the context of an assignment:
+      class-var = new class-name(arg-list);
+          - class-name(arg-list) specifies constructor for the class
+  - primitive types don't use "new"
+      - variables of primitive types actually contain the value it is given
+  - object variables are references to the object, adds overhead avoided by primitive types
+
+Garbage Collection
+------------------
+  - when no references to an object exist, memory occupied by the object is released
+  - occurs sporadically
+  - usually runs only when:
+      - there are objects to recycle
+      - there is a need to recycle them
+
+  The finalize() Method
+  ---------------------
+    -------------------------------
+    protected void finalize() {
+      // finalization code
+    }
+    -------------------------------
+    - Java run-time system calls this method when it is about to recycle an object of the class
+    - not called when object goes out of scope
+    - if program ends before garbage collection occurs, finalize() will not execute
+
+The "this" Keyword
+------------------
+  - "this" is a reference to the invoking object
+  - implicitly passed to the method called
+  - members of a class can be written like: this.instance-var
+  - used to "uncover" hidden instance variables (when the name of a parameter or local variable is the same as the name of an instance variable)
+      - local name "hides" the instance variable, so use this.instance-var to access the instance variable
