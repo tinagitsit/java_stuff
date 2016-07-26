@@ -1,0 +1,157 @@
+More Data Types and Operators
+-----------------------------
+  - arrays
+  - String data type
+  - bitwise operators
+  - ? ternary operator
+  - for-each loop
+  - command-line arguments
+
+
+Arrays
+------
+  - collection of variables of the same type
+  - implemented as objects
+      - unused arrays can be garbage collected
+
+  One-Dimensional Arrays
+  ----------------------
+    ---------------------------------------------------
+    type array-name[] = new type[size];                   // to declare a one-dimensional array
+
+    type array-name[] = {val1, val2, val3, ..., valN};    // to initialize a one-dimensional array
+    ---------------------------------------------------
+    - list of related variables
+    - type = element type of array (aka. base type)
+    - access individual elements of array using index (zero-based)
+    - dynamically allocated using "new" or automatically allocated when initialized
+
+  Multidimensional Arrays
+  -----------------------
+    Two-Dimensional Arrays
+    ----------------------
+      - ie. int table[][] = new int[10][20];
+
+    Irregular Arrays
+    ----------------
+      - when allocating memory for multidimensional arrays, you only need to specify the memory for the first dimension,
+        can allocate remaining memory separately
+          int table[][] = new int[3][];
+          table[0] = new int[4];
+          table[1] = new int[5];
+          table[2] = new int[2];
+      - when allocating dimensions separately, length of each array can be different
+      - not recommended for most applications, but used effectively in some situations,
+          ie. for a very large two-dimensional array that is sparsely populated
+
+      Arrays of Three or More Dimensions
+      ----------------------------------
+        ---------------------------------------------------------
+        type name[][]...[] = new type[size1][size2]...[sizeN];
+        ---------------------------------------------------------
+
+      Initializing Multidimensional Arrays
+      ------------------------------------
+        ----------------------------------------
+        // for a two-dimensional array
+        type-specifier array-name[][] = {
+          {val, val, val, ..., val},
+          {val, val, val, ..., val},
+          .
+          .
+          .
+          {val, val, val, ..., val}
+        };
+        ----------------------------------------
+
+  Alternative Array Declaration Syntax
+  ------------------------------------
+    --------------------
+    type[] var-name;    // square brackets follow type specifier, not array variable
+    --------------------
+    - convenient for declaring multiple arrays at once or when specifying array as return type
+
+  Assigning Array References
+  --------------------------
+    - when you assign an array reference variable to another, you change what object the variable refers to
+
+  Using the length Member
+  -----------------------
+    - length instance variable associated with each array object
+    - contains the number of elements the array can hold
+    - use as array-name.length
+
+
+The For-Each Style For Loop
+---------------------------
+  ---------------------------------------------------
+  for(type itr-var: collection) statement-block;
+  ---------------------------------------------------
+  - cycles through contents of collection defined by the Collections Framework
+      - Collections Framework -- a set of classes that implement various data structures, ie. lists, vectors, sets, maps
+  - iteration variable is read-only; doesn't change the contents of the collection
+
+
+Strings
+-------
+  --------------------------------------
+  String str = new String("Hello");       // constructing a String object using new and calling the String constructor
+  String str2 = new String(str);          // construct a string from another string
+
+  String str = "another string";          // another way to create a String
+  --------------------------------------
+  - objects in Java; an array of characters in most other programming languages
+  - concatenate strings using + operator
+  - equals() method compares character sequences of two String objects for equality;
+      using == determines whether the two references refer to the same object
+  - immutable; character sequence that makes up the String cannot be altered once created
+      - create a new String if needed
+      - StringBuffer class creates string objects that can be changed (using setCharAt())
+          - StringBuilder (related to StringBuffer) also supports strings that can be changed
+      - substring()
+          - String substring(int startIndex, int endIndex)
+              - doesn't include character at endIndex
+  - can use String to control SWITCH statement (JDK 7+)
+      - can be less efficient than switching on integers
+
+
+Command-Line Arguments
+----------------------
+  - public static void main(String args[]){}
+      - stored in the String array passed to main()
+      - access command-line arguments through args
+
+
+Bitwise Operators
+-----------------
+  -----------------------------------
+  &   Bitwise AND
+  |   Bitwise OR
+  ^   Bitwise exclusive OR
+  >>  Shift right
+  >>> Unsigned shift right
+  <<  Shift left
+  ~   One's complement (unary NOT)
+  -----------------------------------
+  - can be used on values of type long, int, short, char, or byte
+  - cannot be used on boolean, float, double, or class types
+  - AND can be used to turn bits off / determine whether a bit is on or off
+  - OR can be used to turn bits on
+  - XOR
+      - sequence of two XORs can produce original value
+          R1 = X ^ Y; R2 = R1 ^ Y;
+          R2 has the same value as X
+
+
+The ? Operator
+--------------
+  --------------------------
+  Exp1 ? Exp2 : Exp3;       // Exp1 is boolean expression; Exp2 and Exp3 are any other type other than void
+  --------------------------
+  - if Exp1 is true, Exp2 becomes the value of the entire expression; else Exp3 becomes the value of the expression
+  - used to replace if-else of this form:
+      if(condition)
+        var = expression1;
+      else
+        var = expression2;
+  - ternary operator -- requires 3 operands
