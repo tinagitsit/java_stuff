@@ -75,7 +75,7 @@ Operators
           -> +, -, *, / (can be applied to any built-in numeric data type & char)
           -> % (can be applied to both integer & floating-point types)
           -> ++, -- (increment & decrement, prefix & postfix)
-      - Bitwise
+      - Bitwise (Ch. 5)
       - Relational
           - relationships values can have with one another
           -> ==, !=, >, <, >=, <=

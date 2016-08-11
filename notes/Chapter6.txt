@@ -1,0 +1,128 @@
+A Closer Look at Methods and Classes
+------------------------------------
+  - control access to members
+  - pass objects to methods
+  - overload methods & constructors
+  - recursion
+  - static
+  - inner classes
+  - varargs
+
+Controlling Access to Class Members
+-----------------------------------
+  - Access Modifiers
+      - public
+          - the default if no access modifier specified unless program is broken down into packages(grouping of classes)
+      - private
+          - can be accessed only by other members of its class
+      - protected (Chapter 8)
+  - access modifiers precede rest of member's type specification
+
+Pass Objects to Methods
+-----------------------
+  - ie. class Block {
+          boolean sameBlock(Block ob) {
+            // do something
+          }
+        }
+
+How Arguments Are Passed
+------------------------
+  - call-by-value
+      - copies value of argument
+      - used for primitive types
+  - call-by-reference
+      - changes made to the parameter will affect argument
+      - Java defines a set of classes that wrap primitive types in objects (indirectly passing primitive types by reference)
+
+Method Overloading
+------------------
+  - one way polymorphism is implemented
+  - 2+ methods can have the same name as long as parameter declarations are different
+  - automatic type conversion applies to parameters of overloaded methods if there is no direct match
+
+Overloading Constructors
+------------------------
+  - allows you to construct objects in different ways
+      - ie. class MyClass {
+              MyClass() {
+                // do something
+              }
+              MyClass(int i) {
+                // do something else
+              }
+            }
+  - allows one object to initialize another
+      - ie. class MyClass {
+              MyClass(int i) {
+                // do something
+              }
+              // construct one object from another
+              MyClass(MyClass ob) {
+                // do something else
+              }
+            }
+      - for efficiency and is useful to provide constructor that makes a copy of an object
+
+Recursion
+---------
+  - method that calls itself is recursive
+  - when method calls itself, new local variables and parameters are allocated storage on the stack;
+    as recursive call returns, old local variables and parameters are removed from stack
+  - recursive routines may execute more slowly than iterative equivalents because of added overhead of additional method calls
+
+STATIC
+------
+  - methods and variables can be declared as static
+  - static members can be accessed before any objects of its class are created & without reference to any object (no object needs to be created)
+  - main() is static because it must be called by the JVM when your program begins
+  - to use a static member, specify class name followed by dot operator (same for methods too), ie. MyClass.count = 1, Math.sqrt();
+  - static methods (restrictions):
+      - can directly call only other static methods
+      - can directly access only static data
+      - do not have a this reference
+
+Static Blocks
+-------------
+  --------------------------
+  class StaticBlock {
+    static int x;
+    static {
+      x = 2;
+    }
+  }
+  --------------------------
+  - for initialization before a class is ready to create objects (initialize static variables, connect to server)
+  - executed when a class is first loaded
+
+Nested and Inner Classes
+------------------------
+  - nested class -- class declared within another class
+      - does not exist independently of its enclosing class (scope is bounded by its outer class)
+      - is a member of its enclosing class
+      - can also declare it as local to a block
+          - localized class not known outside block
+      - two types:
+          - preceded by static modifier
+              - can only access static members of its enclosing class
+          - not preceded by static modifier (inner class)
+              - has access to members (variables and methods) of enclosing class
+  - anonymous inner class (Chapter 16) -- inner class that doesn't have a name
+      - object of class is instantiated when class is declared using new
+
+Varargs: Variable-Length Arguments
+----------------------------------
+  ----------------------------------
+  static void vaTest(int ... v) {
+    System.out.println(v.length)    // v implicitly declared as type int[]
+  }
+  ----------------------------------
+  - 0 or more arguments
+  - varargs parameter
+      - is an array
+      - must be last parameter declared by method
+      - there can only be one varargs parameter
+  - can overload varargs method
+      - with different types
+      - add one or more different parameters
+      - can be ambiguous if you call the method with no arguments
